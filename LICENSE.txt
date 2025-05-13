@@ -1,0 +1,41 @@
+📄 Lizenzbestimmungen / License Terms
+📌 Deutsch
+
+Copyright (c) 2025 David Dornheim
+
+Diese Software (inkl. Quellcode, Inhalte und Funktionen) darf kostenlos genutzt werden, ausschließlich zu privaten oder nicht-kommerziellen Zwecken.
+
+Es ist nicht erlaubt, die Software oder Teile davon:
+
+    zu verändern,
+
+    weiterzugeben,
+
+    zu verkaufen oder kommerziell zu nutzen,
+
+    in eigene Projekte einzubinden,
+
+    öffentlich zu hosten (z. B. auf eigenen Servern oder Websites).
+
+Die Nutzung erfolgt auf eigene Gefahr. Es wird keine Haftung für Schäden, Datenverluste oder Fehlfunktionen übernommen.
+
+
+📌 English
+
+Copyright (c) 2025 David Dornheim
+
+This software (including source code, content and functionality) may be used free of charge, for personal or non-commercial purposes only.
+
+You are not allowed to:
+
+    modify the software,
+
+    distribute or share it,
+
+    sell or use it commercially,
+
+    integrate it into other projects,
+
+    host it publicly (e.g., on own servers or websites).
+
+Use is at your own risk. No liability is accepted for damages, data loss, or malfunctions.
