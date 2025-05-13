@@ -1,0 +1,252 @@
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <img src="Logo.jpg" alt="Logo" id="site-logo" />
+  <title>ToolBox4U – Deine kostenlosen Alltags-Tools</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ToolBox4U</h1>
+    <h2>Kostenlose Alltags-Tools für dich</h2>
+  </header>
+
+  <main>
+    <section id="password-generator">
+      <h2>Passwort-Generator</h2>
+      <button onclick="generatePassword()">Passwort generieren</button>
+      <input type="text" id="password-output" readonly />
+    </section>
+
+    <section id="random-number-generator">
+  <h2>Zufallszahl-Generator</h2>
+  <label>Min: <input type="number" id="min-number" value="1" /></label>
+  <label>Max: <input type="number" id="max-number" value="100" /></label>
+  <br /><br />
+  <button onclick="generateRandomNumber()">Zahl generieren</button>
+  <input type="text" id="random-number-output" readonly />
+</section> 
+
+<section id="qr-code-generator">
+  <h2>QR-Code-Generator</h2>
+  <input type="text" id="qr-input" placeholder="Text oder Link eingeben" />
+  <br /><br />
+  <button onclick="generateQRCode()">QR-Code generieren</button>
+  <div id="qr-output" style="margin-top: 1em;"></div>
+</section>
+
+<section id="text-counter">
+  <h2>Wort- & Zeichenzähler</h2>
+  <textarea id="text-input" rows="6" cols="40" placeholder="Text hier eingeben..."></textarea>
+  <br /><br />
+  <button onclick="countText()">Zählen</button>
+  <p id="word-count">Wörter: 0</p>
+  <p id="char-count">Zeichen: 0</p>
+</section>
+
+<section id="dice-roller">
+  <h2>Würfel-Simulator 🎲</h2>
+  <button onclick="rollDice()">Würfeln</button>
+  <p id="dice-result" style="font-size: 2em; margin-top: 1em;"></p>
+</section>
+
+<section id="todo-list">
+  <h2>To-Do-Liste 📝</h2>
+  <input type="text" id="todo-input" placeholder="Neue Aufgabe eingeben" />
+  <button onclick="addTodo()">Hinzufügen</button>
+  <ul id="todo-items"></ul>
+</section>
+
+<section id="bmi-calculator">
+  <h2>BMI-Rechner 📏</h2>
+  <label for="bmi-height">Größe (cm):</label>
+  <input type="number" id="bmi-height" placeholder="z. B. 170" /><br /><br />
+  <label for="bmi-weight">Gewicht (kg):</label>
+  <input type="number" id="bmi-weight" placeholder="z. B. 65" /><br /><br />
+  <button onclick="calculateBMI()">Berechnen</button>
+  <p id="bmi-result"></p>
+</section>
+
+<section id="calendar">
+  <h2>Monatskalender 📅</h2>
+  <div id="calendar-controls">
+    <button onclick="changeMonth(-1)">⏮️</button>
+    <span id="calendar-month-year"></span>
+    <button onclick="changeMonth(1)">⏭️</button>
+  </div>
+  <table id="calendar-table"></table>
+</section>
+
+<section id="weekly-planner">
+  <h2>Wochenplaner 🗓️</h2>
+  <table id="week-table">
+    <tr>
+      <th>Tag</th>
+      <th>Plan</th>
+    </tr>
+    <tr><td>Montag</td><td><input type="text" /></td></tr>
+    <tr><td>Dienstag</td><td><input type="text" /></td></tr>
+    <tr><td>Mittwoch</td><td><input type="text" /></td></tr>
+    <tr><td>Donnerstag</td><td><input type="text" /></td></tr>
+    <tr><td>Freitag</td><td><input type="text" /></td></tr>
+    <tr><td>Samstag</td><td><input type="text" /></td></tr>
+    <tr><td>Sonntag</td><td><input type="text" /></td></tr>
+  </table>
+</section>
+
+<section id="unit-converter">
+  <h2>Einheiten-Umrechner</h2>
+  <label for="unit-type">Einheitentyp:</label>
+  <select id="unit-type">
+    <option value="length">Länge</option>
+    <option value="weight">Gewicht</option>
+    <option value="temperature">Temperatur</option>
+  </select><br>
+
+  <label for="unit-input">Eingabewert:</label>
+  <input type="number" id="unit-input" placeholder="Wert eingeben"><br>
+
+  <label for="from-unit">Von:</label>
+  <select id="from-unit"></select><br>
+
+  <label for="to-unit">Nach:</label>
+  <select id="to-unit"></select><br>
+
+  <button onclick="convertUnits()">Umrechnen</button>
+  <p id="unit-result"></p>
+</section>
+
+<section id="timer-stopwatch">
+  <h2>Stoppuhr & Timer</h2>
+
+  <div id="stopwatch">
+    <h3>🕒 Stoppuhr</h3>
+    <p id="stopwatch-display">00:00:00</p>
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="pauseStopwatch()">Pause</button>
+    <button onclick="resetStopwatch()">Zurücksetzen</button>
+  </div>
+
+  <hr>
+
+  <div id="timer">
+    <h3>⏳ Timer</h3>
+    <input type="number" id="timer-minutes" placeholder="Minuten eingeben">
+    <button onclick="startTimer()">Start Timer</button>
+    <p id="timer-display">00:00</p>
+  </div>
+</section>
+
+<section id="namensgenerator">
+  <h2>Namensgenerator</h2>
+  <button onclick="generateName()">Zufälligen Namen generieren</button>
+  <p id="name-output" style="font-weight: bold; margin-top: 10px;"></p>
+</section>
+
+<section id="notizblock">
+  <h2>Notizblock</h2>
+  <textarea id="note-text" rows="6" placeholder="Schreib deine Notiz hier..." style="width: 100%;"></textarea>
+  <br>
+  <button onclick="saveNote()">Speichern</button>
+  <button onclick="clearNote()">Löschen</button>
+  <p id="note-status" style="margin-top: 10px;"></p>
+</section>
+
+<section id="spruch-des-tages">
+  <h2>Spruch des Tages</h2>
+  <button onclick="zeigeSpruch()">Zufälligen Spruch anzeigen</button>
+  <p id="spruch-anzeige" style="font-style: italic; margin-top: 10px;"></p>
+</section>
+
+<section id="trinkgeld-rechner">
+  <h2>Trinkgeld- & Rabatt-Rechner</h2>
+  <label>Rechnungsbetrag (€):</label>
+  <input type="number" id="betrag" placeholder="z. B. 50" />
+  
+  <label>Prozentsatz (%):</label>
+  <input type="number" id="prozent" placeholder="z. B. 10" />
+
+  <br><br>
+  <button onclick="berechneTrinkgeld()">Trinkgeld berechnen</button>
+  <button onclick="berechneRabatt()">Rabatt berechnen</button>
+
+  <p id="rechner-ausgabe" style="margin-top: 10px; font-weight: bold;"></p>
+</section>
+
+<section id="tageshoroskop">
+  <h2>Tageshoroskop</h2>
+  <label for="sternzeichen">Wähle dein Sternzeichen:</label>
+  <select id="sternzeichen">
+    <option value="Widder">Widder</option>
+    <option value="Stier">Stier</option>
+    <option value="Zwillinge">Zwillinge</option>
+    <option value="Krebs">Krebs</option>
+    <option value="Löwe">Löwe</option>
+    <option value="Jungfrau">Jungfrau</option>
+    <option value="Waage">Waage</option>
+    <option value="Skorpion">Skorpion</option>
+    <option value="Schütze">Schütze</option>
+    <option value="Steinbock">Steinbock</option>
+    <option value="Wassermann">Wassermann</option>
+    <option value="Fische">Fische</option>
+  </select>
+  <br><br>
+  <button onclick="zeigeHoroskop()">Horoskop anzeigen</button>
+  <p id="horoskop-anzeige" style="margin-top: 10px; font-style: italic;"></p>
+</section>
+
+<section id="zahlenumrechner">
+  <h2>Zahlenumrechner (Binär &lt;-&gt; Dezimal)</h2>
+  <label>Zahl:</label>
+  <input type="text" id="zahlInput" placeholder="z. B. 1010 oder 10" />
+  <br><br>
+  <button onclick="binZuDez()">Binär → Dezimal</button>
+  <button onclick="dezZuBin()">Dezimal → Binär</button>
+  <p id="zahlErgebnis" style="margin-top: 10px;"></p>
+</section>
+
+<section id="reaktionszeit">
+  <h2>Reaktionszeit-Messer</h2>
+  <p>Drücke den Button, sobald er grün wird, um deine Reaktionszeit zu messen!</p>
+  <button id="startButton" onclick="starteReaktion()">Start</button>
+  <p id="reaktionszeitErgebnis" style="margin-top: 10px;"></p>
+</section>
+
+<section id="kopfrechnen">
+  <h2>Kopfrechnen-Übung</h2>
+  <p id="rechenaufgabe"></p>
+  <input type="number" id="antwortInput" placeholder="Deine Antwort" />
+  <button onclick="checkAntwort()">Antwort Überprüfen</button>
+  <p id="antwortErgebnis" style="margin-top: 10px;"></p>
+</section>
+
+<section id="textToolbox">
+  <h2>Text-Toolbox</h2>
+  <textarea id="textInput" rows="4" placeholder="Text hier eingeben..."></textarea>
+  <br><br>
+  <button onclick="textUmkehren()">Text Umkehren</button>
+  <button onclick="textInGross()">Text in Großbuchstaben</button>
+  <button onclick="textInKlein()">Text in Kleinbuchstaben</button>
+  <button onclick="textZählen()">Text zählen</button>
+  <p id="textErgebnis" style="margin-top: 10px;"></p>
+</section>
+
+<section id="textToSpeech">
+  <h2>Text-to-Speech</h2>
+  <textarea id="speechInput" rows="4" placeholder="Gib hier einen Text ein..."></textarea>
+  <br><br>
+  <button onclick="textVorlesen()">Text vorlesen</button>
+  <p id="speechStatus" style="margin-top: 10px;"></p>
+</section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ToolBox4U – Alle Rechte vorbehalten</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
