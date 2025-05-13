@@ -74,4 +74,8 @@ For questions or suggestions: [Contact us](mailto:dornheim-david@web.de)
 
 ---
 
+## Lizenz
+
+Dieses Projekt darf ausschließlich privat genutzt werden. Details siehe [LICENSE.txt](./LICENSE.txt).
+
 Viel Spaß mit den Tools! / Enjoy using the tools!
