@@ -506,3 +506,28 @@ function textVorlesen() {
   
   document.getElementById("speechStatus").textContent = "Text wird vorgelesen...";
 }
+
+document.getElementById('ingredients-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const ingredient1 = document.getElementById('ingredient1').value;
+  const ingredient2 = document.getElementById('ingredient2').value;
+  const ingredient3 = document.getElementById('ingredient3').value;
+
+  const ingredients = [ingredient1, ingredient2, ingredient3].join(',');
+
+  fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=1e153316dd674df58d49dcda08d0a385`)
+    .then(response => response.json())
+    .then(data => {
+      let recipeHTML = '<h2>Rezepte:</h2>';
+      data.forEach(recipe => {
+        recipeHTML += `<div>
+                         <h3>${recipe.title}</h3>
+                         <img src="${recipe.image}" alt="${recipe.title}">
+                       </div>`;
+      });
+
+      document.getElementById('recipe-results').innerHTML = recipeHTML;
+    })
+    .catch(error => console.log('Fehler:', error));
+});
