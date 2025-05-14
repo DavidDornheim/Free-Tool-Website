@@ -531,3 +531,58 @@ document.getElementById('ingredients-form').addEventListener('submit', function(
     })
     .catch(error => console.log('Fehler:', error));
 });
+
+document.getElementById("ingredients-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const ingredients = [
+    document.getElementById("ingredient1").value,
+    document.getElementById("ingredient2").value,
+    document.getElementById("ingredient3").value,
+    document.getElementById("ingredient4").value
+  ]
+    .filter(i => i.trim() !== "")
+    .join(",");
+
+  if (!ingredients) {
+    document.getElementById("recipe-results").innerHTML = "<p>Bitte gib mindestens eine Zutat ein.</p>";
+    return;
+  }
+
+  const apiKey = "1e153316dd674df58d49dcda08d0a385"; // Achtung: öffentlich sichtbar
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}&number=5&apiKey=${apiKey}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (!data.length) {
+        document.getElementById("recipe-results").innerHTML = "<p>Keine Rezepte gefunden.</p>";
+        return;
+      }
+
+      // Für jedes Rezept weitere Infos abrufen
+      const detailPromises = data.map(recipe =>
+        fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${apiKey}`)
+          .then(response => response.json())
+      );
+
+      Promise.all(detailPromises).then(details => {
+        const resultHTML = details
+          .map(r => `
+            <div class="recipe">
+              <h3><a href="${r.sourceUrl}" target="_blank" rel="noopener noreferrer">${r.title}</a></h3>
+              <img src="${r.image}" alt="${r.title}" style="max-width: 100%; border-radius: 8px;" />
+              <p><strong>Zubereitungszeit:</strong> ${r.readyInMinutes} Minuten</p>
+              <p><strong>Portionen:</strong> ${r.servings}</p>
+            </div>
+          `)
+          .join("");
+
+        document.getElementById("recipe-results").innerHTML = resultHTML;
+      });
+    })
+    .catch(error => {
+      console.error("Fehler beim Abrufen der Rezepte:", error);
+      document.getElementById("recipe-results").innerHTML = "<p>Fehler beim Laden der Rezepte.</p>";
+    });
+});
