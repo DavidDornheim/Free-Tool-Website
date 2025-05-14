@@ -1,118 +1,237 @@
-/* Globales Styling */
-body {
-  font-family: 'Nunito', sans-serif;
-  background-color: #f3f0ff; /* Helles Lila für den Hintergrund */
-  color: #4e2a84; /* Dunkles Lila für den Text */color: #a74b8b;
+/* -----------------------------
+  GLOBAL RESET & BASICS
+----------------------------- */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
 }
 
-#site-logo {
-  max-width: 150px;
-  display: block;
-  margin: 0 auto 1em;
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(145deg, #f4f4f4, #e6e0ff);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
-/* Container für die Tools */
-section {
-  background: #fff;
-  margin: 2em auto;
-  padding: 2em;
-  max-width: 700px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
+/* Intro Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Überschriften */
-h1, h2 {
+main {
+  max-width: 900px;
+  width: 100%;
+}
+
+/* -----------------------------
+  HEADER
+----------------------------- */
+header {
+  background: linear-gradient(135deg, #6a4c93, #8a63d2);
+  color: white;
   text-align: center;
-  color: #343a40;
+  padding: 2rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Buttons */
+header img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h2 {
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+/* -----------------------------
+  TOOLS & SECTION CARDS
+----------------------------- */
+section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #6a4c93;
+}
+
+/* -----------------------------
+  FORM ELEMENTS
+----------------------------- */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+
+/* -----------------------------
+  BUTTONS
+----------------------------- */
 button {
-  background-color: #6a4c9c; /* Lila für Buttons */
+  background: #6a4c93;
   color: white;
   border: none;
-  padding: 0.7em 1.2em;
-  font-size: 1em;
-  border-radius: 8px;
+  padding: 12px 24px;
+  margin-top: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #4e2a84; /* Dunkleres Lila beim Hover */
+  background: #573b82;
+  transform: scale(1.03);
 }
 
-/* Inputs */
-input, select {
-  padding: 0.6em;
+button:active {
+  transform: scale(0.98);
+}
+
+.donate-btn {
+  background: linear-gradient(90deg, #ff8c42, #ff3c38);
+  margin-bottom: 2rem;
+}
+
+.donate-btn:hover {
+  background: linear-gradient(90deg, #ff3c38, #ff8c42);
+}
+
+/* -----------------------------
+  REZEPT-KARTEN
+----------------------------- */
+.recipe {
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: linear-gradient(to right, #ffffff, #f7f5ff);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.recipe:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+.recipe h3 a {
+  color: #6a4c93;
+  text-decoration: none;
+}
+
+.recipe h3 a:hover {
+  text-decoration: underline;
+}
+
+.recipe img {
   width: 100%;
-  max-width: 300px;
-  margin: 0.5em 0;
-  border: 1px solid #6a4c9c; /* Lila Rahmen für Inputs */
-  border-radius: 8px;
+  max-height: 250px;
+  object-fit: cover;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
-/* Tabellen */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1em;
+.recipe p {
+  margin-top: 0.5rem;
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 0.6em;
-  text-align: center;
+/* -----------------------------
+  LADEANZEIGE (Ladebalken/Spinner)
+----------------------------- */
+#loading-spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #6a4c93;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+  animation: spin 0.8s linear infinite;
+  display: none;
 }
 
-th {
-  background-color: #6a4c9c; /* Lila Hintergrund für Tabellenkopf */
-  color: white
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* To-Do-Liste Styling */
-#todo-list li {
-  background: #e9ecef;
-  margin: 0.3em 0;
-  padding: 0.5em;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* -----------------------------
+  DARK MODE
+----------------------------- */
+body.dark {
+  background: linear-gradient(145deg, #121212, #1f1b2e);
+  color: #eee;
 }
 
-/* QR-Code Styling */
-#qr-code {
-  margin-top: 1em;
-  text-align: center;
+body.dark header {
+  background: linear-gradient(135deg, #29203d, #42275a);
+  color: #fff;
 }
 
-/* Kalendersteuerung */
-#calendar-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  margin-bottom: 1em;
-  background-color: #4e2a84;
+body.dark section {
+  background: #2c2c3c;
+  color: #ddd;
 }
 
-#calendar-controls button {
-  background-color: #6a4c9c;
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #444;
+  color: #fff;
+  border: 1px solid #666;
 }
 
-/* Mobile Anpassung */
-@media (max-width: 768px) {
-  section {
-    margin: 1em;
-    padding: 1.2em;
-  }
+body.dark .recipe {
+  background: #3a314f;
+}
 
-  input, button {
-    width: 100%;
-  }
+body.dark button {
+  background: #8a63d2;
+}
+
+body.dark .recipe h3 a {
+  color: #ffaaff;
+}
+
+body.dark #loading-spinner {
+  border: 6px solid #555;
+  border-top: 6px solid #8a63d2;
 }
