@@ -586,3 +586,7 @@ document.getElementById("ingredients-form").addEventListener("submit", function(
       document.getElementById("recipe-results").innerHTML = "<p>Fehler beim Laden der Rezepte.</p>";
     });
 });
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
