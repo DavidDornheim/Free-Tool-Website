@@ -673,3 +673,112 @@ function showWeather() {
     window.open(url, "_blank");
   }
 }
+
+const emojis = ['🍕', '🐶', '🚗', '🌈', '🦄', '🎈', '🎮', '🍓'];
+let memoryDeck = [...emojis, ...emojis];
+let revealed = [];
+let locked = false;
+
+function shuffleMemory(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function createMemoryGrid() {
+  shuffleMemory(memoryDeck);
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  memoryDeck.forEach((emoji, index) => {
+    const card = document.createElement('div');
+    card.classList.add('memory-card');
+    card.dataset.index = index;
+    card.dataset.emoji = emoji;
+    card.addEventListener('click', () => revealCard(card));
+    grid.appendChild(card);
+  });
+}
+
+function revealCard(card) {
+  if (locked || card.classList.contains('revealed')) return;
+  card.textContent = card.dataset.emoji;
+  card.classList.add('revealed');
+  revealed.push(card);
+
+  if (revealed.length === 2) {
+    locked = true;
+    const [first, second] = revealed;
+    if (first.dataset.emoji === second.dataset.emoji) {
+      revealed = [];
+      locked = false;
+      if (document.querySelectorAll('.memory-card.revealed').length === memoryDeck.length) {
+        document.getElementById('memory-message').textContent = "🎉 Alle Paare gefunden!";
+      }
+    } else {
+      setTimeout(() => {
+        first.textContent = '';
+        second.textContent = '';
+        first.classList.remove('revealed');
+        second.classList.remove('revealed');
+        revealed = [];
+        locked = false;
+      }, 800);
+    }
+  }
+}
+
+createMemoryGrid();
+
+let tttCurrent = 'X';
+let tttBoard = Array(9).fill(null);
+
+function renderTicTacToe() {
+  const grid = document.getElementById('ttt-grid');
+  grid.innerHTML = '';
+  tttBoard.forEach((val, i) => {
+    const cell = document.createElement('div');
+    cell.classList.add('ttt-cell');
+    cell.textContent = val || '';
+    cell.addEventListener('click', () => handleTicTacToeClick(i));
+    grid.appendChild(cell);
+  });
+}
+
+function handleTicTacToeClick(index) {
+  if (tttBoard[index] || checkTicTacToeWinner()) return;
+  tttBoard[index] = tttCurrent;
+  tttCurrent = tttCurrent === 'X' ? 'O' : 'X';
+  document.getElementById('ttt-status').textContent = `Spieler: ${tttCurrent}`;
+  renderTicTacToe();
+
+  const winner = checkTicTacToeWinner();
+  if (winner) {
+    document.getElementById('ttt-status').textContent = `🎉 Spieler ${winner} gewinnt!`;
+  } else if (!tttBoard.includes(null)) {
+    document.getElementById('ttt-status').textContent = "🤝 Unentschieden!";
+  }
+}
+
+function checkTicTacToeWinner() {
+  const winCombos = [
+    [0,1,2],[3,4,5],[6,7,8], // Zeilen
+    [0,3,6],[1,4,7],[2,5,8], // Spalten
+    [0,4,8],[2,4,6]          // Diagonalen
+  ];
+  for (const [a,b,c] of winCombos) {
+    if (tttBoard[a] && tttBoard[a] === tttBoard[b] && tttBoard[a] === tttBoard[c]) {
+      return tttBoard[a];
+    }
+  }
+  return null;
+}
+
+function resetTicTacToe() {
+  tttBoard = Array(9).fill(null);
+  tttCurrent = 'X';
+  document.getElementById('ttt-status').textContent = `Spieler: ${tttCurrent}`;
+  renderTicTacToe();
+}
+
+renderTicTacToe();
