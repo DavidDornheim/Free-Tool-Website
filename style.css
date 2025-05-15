@@ -306,3 +306,52 @@ button:hover {
   background: #573b82;
   transform: scale(1.03);
 }
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.memory-card {
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.memory-card.revealed {
+  background-color: #fff;
+}
+
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+.ttt-cell {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border: 2px solid #6a4c93;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6a4c93;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
