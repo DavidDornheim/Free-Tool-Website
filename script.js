@@ -590,3 +590,86 @@ document.getElementById("ingredients-form").addEventListener("submit", function(
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
 }
+
+function switchTab(tabId) {
+  // Tabs ausblenden
+  const allTabs = document.querySelectorAll('.tab-content');
+  allTabs.forEach(tab => tab.classList.add('hidden'));
+
+  // Aktiven Tab anzeigen
+  const selected = document.getElementById(tabId);
+  if (selected) selected.classList.remove('hidden');
+
+  // Buttons aktualisieren
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.tab-btn[onclick*="${tabId}"]`).classList.add('active');
+}
+
+// 1. Wochentags-Rechner
+function calculateWeekday() {
+  const date = new Date(document.getElementById("date-input").value);
+  const days = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  document.getElementById("weekday-result").textContent = `Das ist ein ${days[date.getDay()]}`;
+}
+
+// 2. Countdown
+function calculateCountdown() {
+  const inputDate = new Date(document.getElementById("countdown-date").value);
+  const now = new Date();
+  const diffTime = inputDate - now;
+  const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown-result").textContent = `Noch ${days} Tag(e) bis zu diesem Datum.`;
+}
+
+// 3. Paketverfolgung
+function trackPackage() {
+  const number = document.getElementById("tracking-number").value.trim();
+  const provider = document.getElementById("tracking-provider").value;
+  let url = "#";
+
+  switch (provider) {
+    case "dhl":
+      url = `https://www.dhl.de/de/privatkunden/dhl-sendungsverfolgung.html?piececode=${number}`;
+      break;
+    case "ups":
+      url = `https://www.ups.com/track?tracknum=${number}`;
+      break;
+    case "hermes":
+      url = `https://www.myhermes.de/empfangen/sendungsverfolgung/?trackingNumber=${number}`;
+      break;
+  }
+
+  if (number) window.open(url, "_blank");
+}
+
+// 4. Tagesjournal (localStorage)
+function saveJournal() {
+  const text = document.getElementById("journal-text").value;
+  localStorage.setItem("dailyJournal", text);
+  document.getElementById("journal-status").textContent = "✅ Gespeichert im Browser.";
+}
+
+// 5. Zutaten-Umrechner
+function convertIngredient() {
+  const amount = parseFloat(document.getElementById("ingredient-amount").value);
+  const type = document.getElementById("ingredient-type").value;
+  let result = 0;
+
+  switch (type) {
+    case "sugar": result = amount * 12; break;     // 1 EL Zucker ≈ 12 g
+    case "flour": result = amount * 10; break;     // 1 EL Mehl ≈ 10 g
+    case "butter": result = amount * 15; break;    // 1 EL Butter ≈ 15 g
+  }
+
+  document.getElementById("ingredient-result").textContent = `${amount} EL ${type} ≈ ${result} g`;
+}
+
+// 6. Wetteranzeige (Google - ohne API-Schlüssel)
+function showWeather() {
+  const city = document.getElementById("weather-city").value.trim();
+  if (city) {
+    const url = `https://www.google.com/search?q=Wetter+${encodeURIComponent(city)}`;
+    window.open(url, "_blank");
+  }
+}
