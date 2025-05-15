@@ -7,22 +7,28 @@ Welcome to a simple, free website with useful generator tools!
 
 ## 📌 Funktionen / Features
 
-- 🔐 Passwort-Generator / Password Generator  
-- 📱 QR-Code-Generator / QR Code Generator  
-- 🎲 Zufallszahl-Generator / Random Number Generator  
-- 🎲 Würfelsimulator / Dice Simulator  
-- 📋 To-Do-Liste / To-Do List  
-- ⚖️ BMI-Rechner / BMI Calculator  
-- 📅 Kalender & Wochenplaner / Calendar & Weekly Planner  
-- 🔄 Einheiten-Umrechner / Unit Converter  
-- ✍️ Zeichen-/Wortzähler / Character & Word Counter  
-- ⏱️ Stoppuhr & Timer / Stopwatch & Timer  
-- 🎭 Namensgenerator / Name Generator  
-- 📝 Notizblock / Notepad  
-- 💬 Zufälliger Spruch des Tages / Daily Random Quote  
-- 💰 Trinkgeld-/Rabatt-Rechner / Tip & Discount Calculator  
-- 🔮 Tageshoroskop / Daily Horoscope  
-
+-🔐	Passwort-Generator	Password Generator
+-📱	QR-Code-Generator	QR Code Generator
+-🎲	Zufallszahl-Generator	Random Number Generator
+-🎲	Würfelsimulator	Dice Simulator
+-📋	To-Do-Liste	To-Do List
+-⚖️	BMI-Rechner	BMI Calculator
+-📅	Kalender & Wochenplaner	Calendar & Weekly Planner
+-🔄	Einheiten-Umrechner	Unit Converter
+-✍️	Zeichen-/Wortzähler	Character & Word Counter
+-⏱️	Stoppuhr & Timer	Stopwatch & Timer
+-🎭	Namensgenerator	Name Generator
+-📝	Notizblock	Notepad
+-💬	Zufälliger Spruch des Tages	Daily Random Quote
+-💰	Trinkgeld-/Rabatt-Rechner	Tip & Discount Calculator
+-🔮	Tageshoroskop	Daily Horoscope
+-🍽️	Rezeptfinder	Recipe Finder
+-🗓️	Wochentags-Rechner	Day of the Week Calculator
+-⏳	Wie lange bis …?	Countdown Timer
+-📦	Paketverfolgung	Package Tracker
+-🧾	Tagesjournal	Daily Journal
+-🥄	Zutaten-Umrechner (Löffel ↔ Gramm)	Ingredient Converter (Spoon ↔ Grams)
+-🌤️	Mini-Wetteranzeige	Mini Weather Display
 ---
 
 ## 🌐 Website-Link / Website Link
