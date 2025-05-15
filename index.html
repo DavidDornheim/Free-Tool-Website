@@ -33,6 +33,74 @@
   </button>
 </a>
 
+<form id="ingredients-form">
+  <label for="ingredient1">Zutat 1:</label>
+  <input type="text" id="ingredient1" name="ingredient1">
+  
+  <label for="ingredient2">Zutat 2:</label>
+  <input type="text" id="ingredient2" name="ingredient2">
+
+  <label for="ingredient3">Zutat 3:</label>
+  <input type="text" id="ingredient3" name="ingredient3">
+
+  <label for="ingredient3">Zutat 4:</label>
+  <input type="text" id="ingredient4" name="ingredient4">
+
+  <button type="submit">Rezepte finden</button>
+</form>
+
+<div id="recipe-results"></div>
+
+<section id="weather-widget">
+  <h2>🌤️ Mini-Wetteranzeige</h2>
+  <input type="text" id="weather-city" placeholder="z. B. Berlin" />
+  <button onclick="showWeather()">Wetter anzeigen</button>
+</section>
+
+<section id="ingredient-converter">
+  <h2>🥄 Zutaten-Umrechner</h2>
+  <input type="number" id="ingredient-amount" placeholder="z. B. 3" />
+  <select id="ingredient-type">
+    <option value="sugar">Zucker</option>
+    <option value="flour">Mehl</option>
+    <option value="butter">Butter</option>
+  </select>
+  <button onclick="convertIngredient()">Umrechnen</button>
+  <p id="ingredient-result"></p>
+</section>
+
+<section id="weekday-calculator">
+  <h2>📅 Wochentags-Rechner</h2>
+  <input type="date" id="date-input" />
+  <button onclick="calculateWeekday()">Wochentag anzeigen</button>
+  <p id="weekday-result"></p>
+</section>
+
+<section id="countdown">
+  <h2>⏳ Wie lange bis ...?</h2>
+  <input type="date" id="countdown-date" />
+  <button onclick="calculateCountdown()">Berechnen</button>
+  <p id="countdown-result"></p>
+</section>
+
+<section id="daily-journal">
+  <h2>🧾 Tagesjournal</h2>
+  <textarea id="journal-text" rows="6" placeholder="Was war heute gut? Wofür bist du dankbar?"></textarea>
+  <button onclick="saveJournal()">Speichern</button>
+  <p id="journal-status"></p>
+</section>
+
+<section id="package-tracker">
+  <h2>📦 Paketverfolgung</h2>
+  <input type="text" id="tracking-number" placeholder="Sendungsnummer eingeben..." />
+  <select id="tracking-provider">
+    <option value="dhl">DHL</option>
+    <option value="ups">UPS</option>
+    <option value="hermes">Hermes</option>
+  </select>
+  <button onclick="trackPackage()">Zur Sendungsverfolgung</button>
+</section>
+
     <section id="password-generator">
       <h2>Passwort-Generator</h2>
       <button onclick="generatePassword()">Passwort generieren</button>
@@ -260,23 +328,7 @@
   <p id="speechStatus" style="margin-top: 10px;"></p>
 </section>
 
-<form id="ingredients-form">
-  <label for="ingredient1">Zutat 1:</label>
-  <input type="text" id="ingredient1" name="ingredient1">
-  
-  <label for="ingredient2">Zutat 2:</label>
-  <input type="text" id="ingredient2" name="ingredient2">
 
-  <label for="ingredient3">Zutat 3:</label>
-  <input type="text" id="ingredient3" name="ingredient3">
-
-  <label for="ingredient3">Zutat 4:</label>
-  <input type="text" id="ingredient4" name="ingredient4">
-
-  <button type="submit">Rezepte finden</button>
-</form>
-
-<div id="recipe-results"></div>
 
 
   </main>
