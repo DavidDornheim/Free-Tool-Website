@@ -89,6 +89,23 @@
   <p id="weekday-result"></p>
 </section>
 
+<!-- ChatGPT-Kachel -->
+<section class="tool-card">
+  <h2>🤖 ChatGPT-Helfer</h2>
+  <p>Stell der KI eine Frage, lass dir Ideen oder Lösungen vorschlagen – ganz einfach:</p>
+  <a href="https://chat.openai.com/" target="_blank">
+    <button>ChatGPT starten</button>
+  </a>
+</section>
+
+<!-- Bing Image Generator -->
+<section class="tool-card">
+  <h2>🎨 KI-Bildgenerator</h2>
+  <p>Gib eine Beschreibung ein – die KI erstellt automatisch ein Bild daraus:</p>
+  <input type="text" id="imagePrompt" placeholder="z. B. Ein Panda auf einem Skateboard" />
+  <button onclick="createBingImage()">Bild generieren mit Bing</button>
+</section>
+
 <section id="countdown">
   <h2>⏳ Wie lange bis ...?</h2>
   <input type="date" id="countdown-date" />
@@ -340,6 +357,9 @@
   <button onclick="textVorlesen()">Text vorlesen</button>
   <p id="speechStatus" style="margin-top: 10px;"></p>
 </section>
+
+
+
 
   </main>
 
