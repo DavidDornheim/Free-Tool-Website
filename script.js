@@ -782,3 +782,13 @@ function resetTicTacToe() {
 }
 
 renderTicTacToe();
+
+function createBingImage() {
+  const prompt = document.getElementById("imagePrompt").value.trim();
+  if (prompt) {
+    const url = `https://www.bing.com/images/create?q=${encodeURIComponent(prompt)}`;
+    window.open(url, "_blank");
+  } else {
+    alert("Bitte gib eine Beschreibung für das Bild ein.");
+  }
+}
