@@ -23,13 +23,17 @@ Welcome to a simple, free website with useful generator tools!
 - 💰	Trinkgeld-/Rabatt-Rechner	Tip & Discount Calculator
 - 🔮	Tageshoroskop	Daily Horoscope
 - 🍽️	Rezeptfinder	Recipe Finder
-- 🗓 ️Wochentags-Rechner	Day of the Week Calculator
+- 🗓️	Wochentags-Rechner	Day of the Week Calculator
 - ⏳	Wie lange bis …?	Countdown Timer
 - 📦	Paketverfolgung	Package Tracker
 - 🧾	Tagesjournal	Daily Journal
 - 🥄	Zutaten-Umrechner (Löffel ↔ Gramm)	Ingredient Converter (Spoon ↔ Grams)
 - 🌤️	Mini-Wetteranzeige	Mini Weather Display
----
+- 🃏	Emoji Memory	Emoji Memory
+- ❌⭕	Tic-Tac-Toe	Tic-Tac-Toe
+- 🤖	ChatGPT-Helfer	ChatGPT Assistant
+- 🎨	KI-Bildgenerator (Bing / Craiyon)	AI Image Generator (Bing / Craiyon)
+
 
 ## 🌐 Website-Link / Website Link
 
