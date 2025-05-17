@@ -364,3 +364,41 @@ button:hover {
   font-size: 1rem;
   width: 100%;
 }
+
+.top-menu {
+  position: sticky;
+  top: 0;
+  background: #6a4c93;
+  z-index: 999;
+  padding: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.top-menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.top-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  background: #8e72b5;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.top-menu li a:hover {
+  background: #a28bc6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
