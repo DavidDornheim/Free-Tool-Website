@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
+
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <img src="Logo.jpg" alt="Logo" id="site-logo" />
   <title>ToolBox4U – Deine kostenlosen Alltags-Tools</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) --> 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NP86GRGW9"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9015198079260982"
      crossorigin="anonymous"></script>
 <script>
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -20,9 +24,16 @@
 </script>
 
 <meta name="google-adsense-account" content="ca-pub-9015198079260982">
-  
+
 </head>
 <body>
+
+  <div id="welcome-overlay">
+  <div class="welcome-box">
+    <h1>👋 Willkommen bei ToolBox4U</h1>
+    <p>Deine kostenlosen Alltags-Tools. Schöne das Du da bist.</p>
+  </div>
+</div>
 
   <nav class="top-menu">
   <ul>
@@ -47,6 +58,13 @@
   <main>
 
     <div id="loading-spinner"></div>
+
+  <header id="header" style="background-size: cover; background-position: center;">
+  <div class="header-overlay">
+    <h1>ToolBox4U</h1>
+    <h2>Deine Tools. Dein Alltag. Deine Power.</h2>
+  </div>
+</header>
 
 <a href="https://paypal.me/elisedornheim" target="_blank">
   <button style="padding: 10px 20px; background-color: #0070ba; color: white; border: none; border-radius: 5px;">
@@ -119,7 +137,7 @@
 </section>
 
 <!-- ChatGPT-Kachel -->
-  <section id="chatgpt-helper" class="tool-card">
+ <section id="chatgpt-helper" class="tool-card">
   <h2>🤖 ChatGPT-Helfer</h2>
   <p>Stell der KI eine Frage, lass dir Ideen oder Lösungen vorschlagen – ganz einfach:</p>
   <a href="https://chat.openai.com/" target="_blank">
@@ -133,6 +151,22 @@
   <p>Gib eine Beschreibung ein – die KI erstellt automatisch ein Bild daraus:</p>
   <input type="text" id="imagePrompt" placeholder="z. B. Ein Panda auf einem Skateboard" />
   <button onclick="createBingImage()">Bild generieren mit Bing</button>
+</section>
+
+<section id="day-log">
+  <h2>🧠 Was habe ich heute gemacht?</h2>
+  <textarea id="tagesnotiz" rows="6" placeholder="Meine Gedanken, Aufgaben oder Erlebnisse..."></textarea>
+  <br><br>
+  <button onclick="saveDayLog()">Speichern</button>
+  <button onclick="clearDayLog()">Löschen</button>
+  <p id="log-status" style="margin-top: 10px;"></p>
+</section>
+
+<!-- Was soll ich heute tun? -->
+<section id="task-generator">
+  <h2>🚀 Was soll ich heute tun?</h2>
+  <button onclick="neueAufgabe()">Neue Aufgabe anzeigen</button>
+  <p id="tagesaufgabe" style="margin-top: 1rem; font-size: 1.2rem; font-weight: bold;"></p>
 </section>
 
 <section id="countdown">
