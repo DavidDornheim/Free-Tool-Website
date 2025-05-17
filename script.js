@@ -792,3 +792,46 @@ function createBingImage() {
     alert("Bitte gib eine Beschreibung für das Bild ein.");
   }
 }
+
+function neueAufgabe() {
+  const aufgaben = [
+    "Räume deinen Schreibtisch in 5 Minuten auf.",
+    "Schreibe 3 Dinge auf, für die du dankbar bist.",
+    "Teste heute ein neues Tool von ToolBox4U.",
+    "Mach 20 Kniebeugen – sofort!",
+    "Verbringe 10 Minuten komplett offline.",
+    "Geh für 5 Minuten an die frische Luft.",
+    "Sag einer Person heute ehrlich Danke.",
+    "Lächle dich im Spiegel an – 10 Sekunden.",
+    "Setze dir ein Mini-Ziel und zieh es durch.",
+    "Lerne heute ein neues Emoji: 🪷"
+  ];
+  const zufall = aufgaben[Math.floor(Math.random() * aufgaben.length)];
+  document.getElementById('tagesaufgabe').textContent = zufall;
+}
+
+function saveDayLog() {
+  const log = document.getElementById('tagesnotiz').value;
+  if (log.trim() === "") {
+    document.getElementById('log-status').textContent = "Bitte etwas eintragen.";
+    return;
+  }
+  localStorage.setItem('daylog_' + new Date().toISOString().split('T')[0], log);
+  document.getElementById('log-status').textContent = "✅ Eintrag gespeichert.";
+}
+
+function clearDayLog() {
+  document.getElementById('tagesnotiz').value = "";
+  document.getElementById('log-status').textContent = "Eintrag gelöscht (nicht gespeichert).";
+}
+
+// Lade lizenzfreies Bild von Unsplash
+fetch("https://source.unsplash.com/1600x400/?nature, productivity, code")
+  .then(response => {
+    document.getElementById("header").style.backgroundImage = `url(${response.url})`;
+  });
+
+  setTimeout(() => {
+  const welcome = document.getElementById('welcome-overlay');
+  if (welcome) welcome.style.display = "none";
+}, 3000);
