@@ -835,3 +835,46 @@ fetch("https://source.unsplash.com/1600x400/?nature, productivity, code")
   const welcome = document.getElementById('welcome-overlay');
   if (welcome) welcome.style.display = "none";
 }, 3000);
+
+window.speichereEintrag = async function () {
+  const name = document.getElementById("gastname").value.trim();
+  const nachricht = document.getElementById("gasteintrag").value.trim();
+  const status = document.getElementById("eintrag-status");
+
+  if (name && nachricht) {
+    await addDoc(collection(db, "gaestebuch"), {
+      name: name,
+      nachricht: nachricht,
+      timestamp: new Date()
+    });
+
+    // Eingabefelder leeren
+    document.getElementById("gastname").value = "";
+    document.getElementById("gasteintrag").value = "";
+
+    // Einträge neu laden
+    ladeEintraege();
+
+    // Erfolgsmeldung anzeigen
+    status.style.display = "block";
+
+    // Nach 3 Sekunden wieder ausblenden
+    setTimeout(() => {
+      status.style.display = "none";
+    }, 3000);
+  }
+};
+
+db.ref("gaestebuch").on("value", snapshot => {
+  const liste = document.getElementById("eintragsListe");
+  liste.innerHTML = "";
+  const daten = snapshot.val();
+  if (daten) {
+    const eintraege = Object.values(daten).reverse(); // neueste oben
+    eintraege.forEach(eintrag => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${eintrag.name}</strong> <em>${eintrag.zeit}</em><br>${eintrag.nachricht}`;
+      liste.appendChild(li);
+    });
+  }
+});
