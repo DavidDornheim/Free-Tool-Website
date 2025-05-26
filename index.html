@@ -421,10 +421,16 @@
   <p id="speechStatus" style="margin-top: 10px;"></p>
 </section>
 
+<section id="gaestebuch">
+  <h2>📖 Gästebuch</h2>
+  <input type="text" id="gastname" placeholder="Dein Name" />
+  <textarea id="gasteintrag" placeholder="Deine Nachricht..."></textarea>
+  <button onclick="speichereEintrag()">Eintragen</button>
+  <ul id="eintragsListe"></ul>
+  <p id="eintrag-status" style="color: green; font-weight: bold; display: none;">✅ Eintrag gespeichert!</p>
+</section>
 
-
-
-  </main>
+</main>
 
   <footer>
     <p>&copy; 2025 ToolBox4U – Alle Rechte vorbehalten</p>
@@ -434,5 +440,62 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9015198079260982"
      crossorigin="anonymous"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDa53X_Jg9BvBzgYLHZtvclifZNJIczqn8",
+    authDomain: "toolbox4u-gaestebuch.firebaseapp.com",
+    projectId: "toolbox4u-gaestebuch",
+    storageBucket: "toolbox4u-gaestebuch.appspot.com",
+    messagingSenderId: "911239444222",
+    appId: "1:911239444222:web:c7f9e6d4ec53a4465597af",
+    measurementId: "G-7C55KZFWZE"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Gästebucheintrag speichern
+  window.speichereEintrag = async function () {
+    const name = document.getElementById("gastname").value.trim();
+    const nachricht = document.getElementById("gasteintrag").value.trim();
+    const status = document.getElementById("eintrag-status");
+
+    if (name && nachricht) {
+      await addDoc(collection(db, "gaestebuch"), {
+        name: name,
+        nachricht: nachricht,
+        timestamp: new Date()
+      });
+
+      document.getElementById("gastname").value = "";
+      document.getElementById("gasteintrag").value = "";
+      ladeEintraege();
+
+      status.style.display = "block";
+      setTimeout(() => status.style.display = "none", 3000);
+    }
+  };
+
+  // Einträge laden
+  async function ladeEintraege() {
+    const liste = document.getElementById("eintragsListe");
+    liste.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "gaestebuch"));
+    querySnapshot.forEach((doc) => {
+      const eintrag = doc.data();
+      const li = document.createElement("li");
+      li.textContent = `${eintrag.name}: ${eintrag.nachricht}`;
+      liste.appendChild(li);
+    });
+  }
+
+  // Direkt beim Laden die bisherigen Einträge anzeigen
+  ladeEintraege();
+</script>
 </body>
 </html>
